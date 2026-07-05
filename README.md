@@ -15,7 +15,6 @@
 [Demo](https://youtu.be/q6AUIC6gOYQ) · [Problem](#-problem-statement) · [Solution](#-solution) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
 
 </div>
----
 
 ## 🚀 Overview
 
