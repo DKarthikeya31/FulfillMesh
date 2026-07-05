@@ -57,7 +57,6 @@ This project was built as a case study against Walmart's retail supply chain, bu
 
 <div align="center">
 
-[![Watch the demo](https://img.youtube.com/vi/q6AUIC6gOYQ/maxresdefault.jpg)](https://youtu.be/q6AUIC6gOYQ)
 
 **▶️ [Watch the full walkthrough](https://youtu.be/q6AUIC6gOYQ)**
 
