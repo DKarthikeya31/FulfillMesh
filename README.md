@@ -15,34 +15,6 @@
 [Demo](https://youtu.be/q6AUIC6gOYQ) · [Problem](#-problem-statement) · [Solution](#-solution) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
 
 </div>
-
----
-
-## 📖 Table of Contents
-
-- [Overview](#-overview)
-- [Demo](#-demo)
-- [Problem Statement](#-problem-statement)
-- [Solution](#-solution)
-- [Key Features](#-key-features)
-- [Architecture](#-architecture)
-- [Tech Stack](#️-tech-stack)
-- [Project Structure](#-project-structure)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Backend Setup](#1-backend-setup)
-  - [Frontend Setup](#2-frontend-setup)
-  - [Environment Variables](#3-environment-variables)
-  - [Verifying the Setup](#4-verifying-the-setup)
-- [API Reference](#-api-reference)
-- [Algorithmic Approach](#-algorithmic-approach)
-- [Impact & Results](#-impact--results)
-- [Testing](#-testing)
-- [Roadmap](#-roadmap)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
-
 ---
 
 ## 🚀 Overview
