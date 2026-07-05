@@ -322,9 +322,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📬 Contact
 
-**Author:** Your Name
-**Email:** your.email@example.com
-**LinkedIn:** [linkedin.com/in/your-profile](https://linkedin.com)
+**Author:** Dasari Karthikeya
 **Demo Video:** [https://youtu.be/q6AUIC6gOYQ](https://youtu.be/q6AUIC6gOYQ)
 
 ---
