@@ -1,4 +1,4 @@
-# Walmart Supply Chain Optimization – AI-Powered Fulfillment Engine
+# FulfillMesh – AI-Powered Fulfillment Engine
 
 ## 🚀 Overview
 
@@ -59,13 +59,6 @@ We propose an AI-powered smart fulfillment engine that:
 - NetworkX – Graph-based route optimization  
 - Flask / FastAPI – For prototype API endpoints  
 - React.js – Front-end simulation UI  
-
----
-
-## 👥 Team
-
-- Shiv Dixit  
-- Radhi Patel
 
 ---
 
