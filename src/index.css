@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Walmart Futuristic Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Walmart Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 218 25% 15%;
+    
+    /* Walmart Blue Primary (#0071CE) */
+    --primary: 208 100% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 208 100% 60%;
+    --primary-dark: 208 100% 30%;
+    
+    /* Walmart Yellow Accent (#FFC220) */
+    --walmart-yellow: 45 100% 56%;
+    --walmart-yellow-light: 45 100% 70%;
+    
+    /* Secondary Colors */
+    --secondary: 208 40% 96%;
+    --secondary-foreground: 208 50% 20%;
+    
+    /* Muted Colors */
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 45%;
+    
+    /* Accent Colors */
+    --accent: 208 30% 92%;
+    --accent-foreground: 208 50% 25%;
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 218 25% 15%;
+    --glass-bg: 0 0% 100% / 0.8;
+    --glass-border: 208 100% 40% / 0.2;
+    
+    /* Interactive Elements */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 140 60% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 208 100% 40%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-walmart: linear-gradient(135deg, hsl(var(--walmart-yellow)), hsl(var(--walmart-yellow)));
+    --gradient-glass: linear-gradient(135deg, hsl(var(--glass-bg)), hsl(0 0% 100% / 0.6));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 50%, hsl(var(--walmart-yellow)) 100%);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -15px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 4px 20px -5px hsl(var(--primary) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme with Walmart blue emphasis */
+    --background: 218 25% 8%;
+    --foreground: 0 0% 95%;
+    
+    --primary: 208 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 208 100% 70%;
+    
+    --secondary: 218 20% 15%;
+    --secondary-foreground: 0 0% 90%;
+    
+    --card: 218 20% 12%;
+    --card-foreground: 0 0% 95%;
+    --glass-bg: 218 20% 12% / 0.8;
+    
+    --muted: 218 15% 18%;
+    --muted-foreground: 218 10% 65%;
+    
+    --accent: 218 20% 20%;
+    --accent-foreground: 0 0% 90%;
+    
+    --border: 218 15% 25%;
+    --input: 218 15% 25%;
+    --ring: 208 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    transition: var(--transition-smooth);
+  }
+}
+
+@layer components {
+  /* Walmart Glass Card Effects */
+  .glass-card {
+    @apply bg-glass-bg backdrop-blur-xl border border-glass-border rounded-xl shadow-card;
+  }
+  
+  /* Walmart Hero Buttons */
+  .btn-walmart-primary {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-8 py-4 rounded-xl font-semibold shadow-elegant hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-walmart-secondary {
+    @apply bg-walmart-yellow text-foreground px-6 py-3 rounded-lg font-medium hover:bg-walmart-yellow-light transition-all duration-300 hover:scale-105;
+  }
+  
+  /* Animated Elements */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-glow;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-glow;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  /* Loading Animation */
+  .loading-shimmer {
+    background: linear-gradient(90deg, 
+      hsl(var(--muted)) 25%, 
+      hsl(var(--muted-foreground) / 0.1) 50%, 
+      hsl(var(--muted)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}

@@ -1,0 +1,168 @@
+return_id,location,sku_name,sku_id
+1,"30.2672,-97.7200",Wrangler Slim Fit Shirt s,10210
+2,"27.9630,-82.4350",Great Value Apple Juice 1 Gallon,10042
+3,"33.4255,-111.9400",Progresso Chicken Noodle Soup 19 oz,10145
+4,"25.7650,-80.1940",Potatoes 5 lb bag,10214
+5,"35.2240,-80.8400",Old Spice Razor Blades 4-pack,10142
+6,"39.0980,-94.5820",Dr Pepper 12 Pack Cans,10000
+7,"35.2050,-80.8390",Wonder Bread White 20 oz,10162
+8,"36.1867,-94.1288",Great Value 2% Milk Half Gallon,10085
+9,"36.0650,-94.1600",Great Value Beans 15 oz,10130
+10,"33.4450,-112.0710",Lettuce 5 oz bag,10004
+11,"39.0400,-94.5880",Great Value T-Shirt 6-pack,10029
+12,"33.7810,-84.3510",Gillette Razor Blades 4-pack,10095
+13,"39.1012,-94.5844",Wrangler 501 Jeans Men,10222
+14,"35.2080,-80.8414",Bananas 1 lb container,10081
+15,"33.7780,-84.3810",Coleman Cooler 50 qt,10063
+16,"30.2700,-97.7450",Lean Cuisine Lasagna 10.5 oz,10014
+17,"25.7850,-80.1330",Coleman Cooler 50 qt,10063
+18,"29.7580,-95.3670",Sweet Potatoes 5 lb bag,10152
+19,"32.7390,-96.8217",Hot Wheels Car Set 5-pack,10021
+20,"39.1040,-94.5870",Great Value Puzzle 1000 pieces,10022
+21,"27.9530,-82.4600",Great Value Greek Yogurt 32 oz,10200
+22,"39.0431,-94.5906",Zyrtec Allergy Relief 50 ct,10129
+23,"36.3700,-94.2060",Great Value Pasta 32 oz,10224
+24,"33.7838,-84.3830",Great Value Shampoo 20 oz,10017
+25,"30.2470,-97.7480",Apple Laptop Core i5,10209
+26,"28.4420,-81.4700",Great Value Cereal 16 oz,10143
+27,"37.8715,-122.2730",Great Value Socks 3-pack,10211
+28,"29.7604,-95.4351",Great Value Cookies 12 oz,10033
+29,"30.2700,-97.7180",Great Value Cookies 12 oz,10033
+30,"32.7834,-96.7806",Great Value Car Wash 64 oz,10178
+31,"37.4419,-122.1430",Google Pixel 8 128GB,10126
+32,"27.9506,-82.5168",Great Value Towels Queen Size,10147
+33,"35.2504,-80.8111",Gerber Baby Food 8 oz,10043
+34,"37.4390,-122.1400",Purina Cat Food 20 lb,10069
+35,"36.0625,-94.1574",Old Spice Razor Blades 4-pack,10142
+36,"33.4484,-112.0740",Levis 501 Jeans s,10164
+37,"33.8484,-84.3781",All Laundry Detergent 92 fl oz,10112
+38,"27.9380,-82.4640",Huffy Bicycle Accessories,10055
+39,"28.5410,-81.3820",Progresso Chicken Noodle Soup 19 oz,10145
+40,"32.7810,-96.7780",Great Value Muffins 12-pack,10206
+41,"25.7580,-80.1890",Purina Dog Food 15 lb,10199
+42,"30.2640,-97.7410",Great Value Cheddar Cheese 16 oz,10189
+43,"36.3729,-94.2088",Pepsi 12 Pack Cans,10052
+44,"28.5383,-81.3792",Wonder Bread Sourdough 20 oz,10195
+45,"40.4430,-79.9540",Great Value Dish Soap 32 oz,10082
+46,"28.4394,-81.4677",Pork Chops Boneless per lb,10105
+47,"37.8044,-122.2712",Great Value Chicken Nuggets 16 oz,10181
+48,"33.4910,-111.9230",Spinach 5 oz bag,10176
+49,"25.7217,-80.2581",Coca-Cola 12 Pack Cans,10098
+50,"38.9120,-77.0460",Gain Laundry Detergent 92 fl oz,10116
+51,"38.8870,-76.9920",Apples per lb,10138
+52,"40.4490,-79.9310",Google Pixel 8 256GB,10120
+53,"38.8980,-77.0290",HP MacBook M2,10031
+54,"28.5999,-81.3392",Great Value Bed Sheets 4-pack,10065
+55,"30.2530,-97.7520",Great Value Frozen Vegetables 12 oz,10058
+56,"40.4640,-79.9570",Great Value Pots & Pans Set,10016
+57,"33.4942,-111.9261",Great Value Canned Fruit 15 oz,10089
+58,"29.7480,-95.3870",Great Value Vitamins Multivitamin 120 ct,10005
+59,"37.7749,-122.4194",Great Value Puzzle Family,10159
+60,"35.2271,-80.8431",Chicken Breast Boneless per lb,10148
+61,"32.7800,-96.7990",Great Value Supplements Omega-3 120 ct,10059
+62,"35.2110,-80.8440",Great Value Puzzle Family,10159
+63,"27.9680,-82.4400",Carrots per lb,10057
+64,"28.4370,-81.4650",Nylabone Dog Toy,10001
+65,"28.5592,-81.3453",Potatoes per lb,10019
+66,"32.8018,-96.8089",Zyrtec Pain Reliever 50 ct,10194
+67,"35.2300,-80.8460",Great Value T-Shirt 3-pack,10170
+68,"33.4970,-111.9290",Gillette Deodorant 13.5 oz,10015
+69,"25.7617,-80.1918",Great Value Supplements Omega-3 120 ct,10059
+70,"36.3290,-94.1160",Great Value Shampoo 20 oz,10017
+71,"33.8520,-84.3800",Great Value Donuts 12-pack,10008
+72,"37.4450,-122.1460",Great Value Baby Formula 24 oz,10087
+73,"35.2110,-80.8560",Potatoes per lb,10019
+74,"39.0890,-94.5790",Pedigree Cat Food 15 lb,10137
+75,"29.7530,-95.3930",Great Value Rice 16 oz,10062
+76,"36.0600,-94.1550",Great Value Vitamins Omega-3 120 ct,10073
+77,"38.9070,-77.0410",Great Value Chicken Nuggets 16 oz,10181
+78,"38.9097,-77.0434",Zyrtec Allergy Relief 50 ct,10129
+79,"29.7630,-95.3720",Huffy Bicycle Accessories,10055
+80,"38.9100,-77.0750",Progresso Chicken Noodle Soup 19 oz,10145
+81,"32.7860,-96.7830",Purina Cat Food 15 lb,10034
+82,"38.8920,-77.0240",Gerber Cereal 8 oz,10198
+83,"30.2833,-97.8167",Great Value Board Game 1000 pieces,10155
+84,"40.4380,-79.9490",Tylenol Pain Reliever 50 ct,10156
+85,"33.4910,-111.9230",Google Pixel 8 128GB,10126
+86,"33.7839,-84.3530",Great Value Board Game Family,10064
+87,"33.4960,-111.9290",Apples 1 lb container,10215
+88,"36.3320,-94.1185",Google Pixel 8 128GB,10126
+89,"32.7420,-96.8240",Wrangler 501 Jeans Men,10222
+90,"40.4430,-79.9980",Blueberries 1 lb container,10107
+91,"36.3760,-94.2110",Tylenol Allergy Relief 100 ct,10049
+92,"39.0539,-94.5944",Nerf Blaster,10025
+93,"39.0510,-94.5920",Nerf Blaster,10025
+94,"30.2640,-97.7220",Great Value Car Wash 64 oz,10178
+95,"27.9659,-82.4374",Great Value Cat Litter 10 oz,10114
+96,"33.4936,-111.9260",Great Value Dish Soap 28 oz,10093
+97,"38.9076,-77.0723",All Laundry Detergent 92 fl oz,10112
+98,"29.8000,-95.4040",Nike Running Shoes,10109
+99,"27.9480,-82.5140",Great Value Soccer Ball,10124
+100,"30.2672,-97.7431",Purina Dog Food 15 lb,10199
+101,"37.8020,-122.2680",Great Value Rice 2 lb,10013
+102,"38.8951,-77.0269",Lean Cuisine Mac & Cheese 10.5 oz,10182
+103,"27.9330,-82.4590",Pampers Diapers Size 5 100 ct,10177
+104,"37.7720,-122.4170",Adidas Hoodie,10175
+105,"32.7980,-96.8070",Pampers Diapers Size 3 120 ct,10026
+106,"40.4406,-79.9959",Gillette Deodorant 13.5 oz,10015
+107,"38.9050,-77.0690",Great Value Bacon 12 oz,10106
+108,"35.2050,-80.8500",Purina Dog Food 15 lb,10199
+109,"40.4515,-79.9342",Great Value Canned Fruit 15 oz,10089
+110,"38.8920,-76.9980",Charmin Toilet Paper 18 rolls,10219
+111,"33.4510,-112.0770",Kelloggs Corn Flakes 18 oz,10028
+112,"39.0570,-94.5970",Great Value Bed Sheets 4-pack,10065
+113,"27.9480,-82.4540",Huggies Diapers Size 3 120 ct,10050
+114,"33.4280,-111.9430",Tylenol Allergy Relief 100 ct,10049
+115,"33.4230,-111.9370",Salmon Fillet per lb,10144
+116,"37.8740,-122.2760",Crest Toothpaste 6 oz,10119
+117,"39.0460,-94.5930",Great Value Baby Wipes 800 ct,10036
+118,"29.7580,-95.4320",All Laundry Detergent 92 fl oz,10112
+119,"33.7870,-84.3550",KitchenAid Pressure Cooker,10047
+120,"25.7823,-80.1304",Great Value Vitamins Omega-3 120 ct,10073
+121,"27.9530,-82.5190",Old Spice Body Wash 4-pack,10123
+122,"30.2500,-97.7500",Great Value Bed Sheets 4-pack,10065
+123,"28.5970,-81.3360",Great Value Chicken Nuggets 48 oz,10020
+124,"25.8040,-80.2020","Samsung 55"" 4K Smart TV",10117
+125,"40.4406,-79.9514",Wrangler 501 Jeans Men,10222
+126,"33.8450,-84.3760",Great Value Towels Queen Size,10147
+127,"37.8070,-122.2740",Pampers Diapers Size 3 120 ct,10026
+128,"28.6030,-81.3420",Dove Deodorant 4-pack,10012
+129,"40.4690,-79.9630",Spinach 5 oz bag,10176
+130,"40.4540,-79.9370",Progresso Chicken Noodle Soup 19 oz,10145
+131,"32.7767,-96.7970",Great Value Cat Litter 25 lb,10003
+132,"37.7780,-122.4220",Campbell's Chicken Noodle Soup 19 oz,10024
+133,"35.2080,-80.8531","LG 65"" 4K Smart TV",10205
+134,"29.8050,-95.4090",Great Value Rice 16 oz,10062
+135,"40.4380,-79.9930",Gerber Baby Food 8 oz,10043
+136,"35.2480,-80.8080",Blueberries 1 lb container,10107
+137,"39.0921,-94.5816",Zyrtec Allergy Relief 50 ct,10129
+138,"36.1890,-94.1310",Great Value Baby Formula 800 ct,10128
+139,"40.4668,-79.9600",Huffy Bicycle Accessories,10055
+140,"29.7604,-95.3698",Pork Chops Boneless per lb,10105
+141,"39.0950,-94.5840",Gillette Deodorant 13.5 oz,10015
+142,"33.7900,-84.3850",Gerber Baby Food 8 oz,10043
+143,"28.5560,-81.3420",Great Value Cereal 2 lb,10100
+144,"27.9356,-82.4618",Dr Pepper 12 Pack Cans,10000
+145,"25.7180,-80.2550",Dell Laptop Core i7,10102
+146,"37.8690,-122.2700",Purina Cat Food 20 lb,10069
+147,"29.8024,-95.4068",Apples 1 lb container,10215
+148,"25.7790,-80.1280",Apples 1 lb container,10215
+149,"36.1840,-94.1260",Hanes 501 Jeans s,10121
+150,"29.7506,-95.3900",Great Value Flour 5 lb,10075
+151,"38.8899,-76.9951",All Laundry Detergent 92 fl oz,10112
+152,"25.7980,-80.1980",Apple MacBook M2,10191
+153,"25.7250,-80.2610",Great Value Greek Yogurt 32 oz,10200
+154,"30.2800,-97.8140",Apples 1 lb container,10215
+155,"33.7570,-84.3920",Great Value Donuts 6-pack,10149
+156,"33.7500,-84.3880",KitchenAid Stand Mixer,10179
+157,"27.9506,-82.4572",Oranges 1 lb container,10196
+158,"35.2530,-80.8140",Zyrtec Allergy Relief 50 ct,10129
+159,"30.2860,-97.8190",Great Value Yogurt 6 oz 4-pack,10040
+160,"36.3350,-94.1210",Tylenol Allergy Relief 100 ct,10049
+161,"32.7730,-96.7950",Great Value Greek Yogurt 6 oz 4-pack,10077
+162,"32.7360,-96.8190",Schwinn Bicycle Accessories,10056
+163,"25.8010,-80.1999",Lean Cuisine Lasagna 10.5 oz,10014
+164,"28.5350,-81.3760",Huggies Diapers Size 5 120 ct,10157
+165,"28.5620,-81.3480",Great Value Orange Juice 1 Gallon,10201
+166,"33.7537,-84.3901",Progresso Chicken Noodle Soup 19 oz,10145
+167,"32.8050,-96.8110",Gillette Deodorant 13.5 oz,10015
