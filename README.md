@@ -3,16 +3,17 @@
 # 📦 FulfillMesh
 ### AI-Powered Fulfillment & Last-Mile Optimization Engine
 
-*Eliminating cost leakage in retail supply chains through real-time, graph-based decision intelligence*
+*Eliminating cost leakage in retail supply chains through real-time, graph-based decision intelligence — now with a natural-language query layer powered by Claude.*
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-async-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Flask](https://img.shields.io/badge/Flask-API-000000?style=flat&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![NetworkX](https://img.shields.io/badge/NetworkX-graph--engine-orange?style=flat)](https://networkx.org/)
+[![Claude API](https://img.shields.io/badge/Claude-API-D97757?style=flat)](https://www.anthropic.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
 [![Status](https://img.shields.io/badge/Status-Prototype-yellow.svg)](#)
 
-[Problem](#-problem-statement) · [Solution](#-solution) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
+[Problem](#-problem-statement) · [Solution](#-solution) · [AI Query Layer](#-ai-driven-natural-language-query-layer) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
 
 </div>
 
@@ -20,14 +21,13 @@
 
 **FulfillMesh** is an AI-powered decision engine designed to eliminate inefficiencies, fragmentation, and cost leakage within large-scale retail supply chains — with a specific focus on **last-mile delivery**, **return bundling**, and **dynamic fulfillment node selection**.
 
-Despite significant investments by major retailers in supply chain platforms (e.g., Walmart's Eden, Spark, and Luminate), critical gaps still persist in real-time decision-making across fulfillment networks. FulfillMesh is built as a proof-of-concept to bridge those gaps using real-time intelligence, graph optimization, and demand-aware routing.
+Despite significant investments by major retailers in supply chain platforms (e.g., Walmart's Eden, Spark, and Luminate), critical gaps still persist in real-time decision-making across fulfillment networks. FulfillMesh is built as a proof-of-concept to bridge those gaps using real-time intelligence, graph optimization, demand-aware routing, and — more recently — LLM-powered natural language interfaces on top of the existing optimization pipeline.
 
 This project was built as a case study against Walmart's retail supply chain, but the underlying engine is retailer-agnostic and generalizes to any multi-node fulfillment network.
 
 ## 🎥 Demo
 
 <div align="center">
-
 
 **▶️ [Watch the full walkthrough](https://youtu.be/q6AUIC6gOYQ)**
 
@@ -52,34 +52,83 @@ FulfillMesh proposes a unified, AI-driven fulfillment layer that:
 - **Optimizes Fulfillment Node Selection** using dynamic cost-efficiency scoring and real-time stock-demand matching, rather than static distance rules
 - **Bundles Deliveries and Returns** on shared routes to minimize redundant trips and improve vehicle utilization
 - **Implements Demand-Aware Inventory Routing** by fusing live demand signals with local inventory positioning
+- **Exposes the entire pipeline through natural language**, so a plain-English order request is automatically translated into the structured parameters the optimization engine needs — no manual SKU lookups or coordinate entry required
 
 The system is modeled as a **weighted, dynamic graph** where nodes represent fulfillment centers/dark stores and edges represent route cost (distance, fuel, time, vehicle capacity). A real-time optimization layer re-scores this graph as demand, inventory, and traffic signals change.
+
+## 🤖 AI-Driven Natural Language Query Layer
+
+The newest addition to FulfillMesh: an LLM-powered interface built on **Claude's tool-use API** that sits directly in front of the existing fulfillment cost/surge prediction pipeline.
+
+**What it does:**
+- Accepts free-text order requests, e.g. *"I need 2 wireless mice delivered near Andheri, Mumbai"*
+- Uses Claude's structured tool-use to extract `product_names` and `delivery_area` from the raw text — no keyword matching or manual parsing
+- Resolves product names to real SKU IDs via the existing product/category mapping layer
+- Geocodes the delivery area to coordinates
+- Feeds everything directly into the existing `evaluate_combos()` XGBoost cost/surge model pipeline
+- Returns the top 3 fulfillment node combinations with cost and SKU breakdowns
+
+**Why it matters:** this isn't a bolt-on chatbot — it's a real integration that lets a non-technical user (or another internal service) interact with the same production optimization pipeline through plain language, closing the gap between "AI-assisted developer workflows" and "AI-powered product features."
+
+**Endpoint:**
+```
+POST /nl_query
+Content-Type: application/json
+
+{
+  "query": "I need 2 wireless mice delivered near Andheri, Mumbai"
+}
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "parsed_query": {
+    "requested_skus": [10293],
+    "unresolved_products": [],
+    "delivery_area": "Andheri, Mumbai",
+    "latitude": 19.1197,
+    "longitude": 72.8468
+  },
+  "top_combinations": [
+    {
+      "nodes": ["NODE-BOM-02"],
+      "total_cost": 42.7,
+      "sku_mapping": { "NODE-BOM-02": [10293] }
+    }
+  ]
+}
+```
 
 ## 🧠 Key Features
 
 - 📦 **Smart Fulfillment Node Selection** — real-time cost/demand-aware ranking instead of static nearest-node logic
 - 🔁 **AI-Driven Delivery & Return Route Bundling** — merges return pickups with delivery routes to cut redundant trips
 - 📊 **Demand-Aware Local Inventory Movement** — links forecasted demand to inventory rebalancing decisions
+- 🗣️ **Natural Language Order Interface** — Claude-powered tool-use layer that turns free text into structured, model-ready input
 - ⚙️ **Real-Time Optimization Engine** — recomputes optimal routes/nodes as conditions change
 - 💰 **Cost Simulation Dashboard** — visualizes per-order cost savings against baseline static routing
-- 🌐 **REST API** — exposes optimization endpoints for integration with external systems
+- 🌐 **REST API** — exposes optimization and NL-query endpoints for integration with external systems
 
 ## 🏗️ Architecture
 
 ```
 ┌──────────────────────┐        ┌────────────────────────┐        ┌────────────────────────┐
-│   React.js Frontend  │  HTTP  │   FastAPI / Flask API  │        │   Optimization Engine   │
-│  (Simulation & UI)   │◄──────►│     (app.py, routes)   │◄──────►│  (NetworkX graph model) │
-└──────────────────────┘  JSON  └────────────────────────┘        └────────────────────────┘
-                                            │                                  │
-                                            ▼                                  ▼
-                                 ┌────────────────────┐            ┌───────────────────────┐
-                                 │  Demand Forecast    │            │  Inventory & Node      │
-                                 │  Module (Pandas)    │            │  State Store           │
-                                 └────────────────────┘            └───────────────────────┘
+│   React.js Frontend  │  HTTP  │      Flask API         │        │   Optimization Engine   │
+│  (Simulation & UI)   │◄──────►│  (app.py, /nl_query)   │◄──────►│  (XGBoost cost/surge,  │
+└──────────────────────┘  JSON  └────────────────────────┘        │   NetworkX graph model) │
+                                            │                     └────────────────────────┘
+                                            ▼                                  │
+                                 ┌────────────────────────┐                    ▼
+                                 │   Claude Tool-Use Layer │        ┌───────────────────────┐
+                                 │  (nl_order_query.py)    │        │  Inventory & Demand    │
+                                 │  NL text → structured    │       │  Data Store            │
+                                 │  SKUs + location         │       └───────────────────────┘
+                                 └────────────────────────┘
 ```
 
-**Flow:** the frontend submits an order/return event → the API layer forwards it to the optimization engine → the engine builds/updates a weighted graph of nodes and edges → a cost-aware search returns the optimal fulfillment node and/or bundled route → results are returned to the frontend for visualization.
+**Flow:** the frontend (or a plain-text request) submits an order → if natural language, the Claude tool-use layer extracts structured SKUs and delivery coordinates first → the API layer forwards structured data to the optimization engine → the engine scores fulfillment nodes using the trained cost/surge models → results are returned for visualization or direct API consumption.
 
 ## 🛠️ Tech Stack
 
@@ -87,8 +136,11 @@ The system is modeled as a **weighted, dynamic graph** where nodes represent ful
 |-------|-----------|---------|
 | Core Engine | **Python 3.10+** | Simulation logic, optimization algorithms |
 | Data Processing | **Pandas, NumPy** | Demand signal processing, data modeling |
+| ML Models | **XGBoost** | Fulfillment cost and surge prediction |
 | Graph Optimization | **NetworkX** | Node graph construction, shortest-path/route optimization |
-| Backend API | **FastAPI / Flask** | REST endpoints for the optimization engine |
+| AI / NLP | **Anthropic Claude API (tool use)** | Natural language → structured query extraction |
+| Geocoding | **Geopy** | Delivery area → coordinates resolution |
+| Backend API | **Flask** | REST endpoints for the optimization engine and NL query layer |
 | Frontend | **React.js** | Interactive simulation & visualization UI |
 | Tooling | **npm, pip** | Dependency & environment management |
 
@@ -97,33 +149,24 @@ The system is modeled as a **weighted, dynamic graph** where nodes represent ful
 ```
 FulfillMesh/
 ├── backend/
-│   ├── app.py                # API entry point (Flask/FastAPI)
-│   ├── engine/
-│   │   ├── node_selector.py  # Fulfillment node scoring & selection
-│   │   ├── route_bundler.py  # Delivery + return route bundling logic
-│   │   └── demand_model.py   # Demand-aware inventory routing
-│   ├── data/                 # Sample nodes, demand, and inventory datasets
-│   ├── tests/                # Unit tests for engine modules
+│   ├── app.py                  # Flask API entry point
+│   ├── nl_order_query.py       # Claude tool-use NL query layer (new)
+│   ├── model_utils.py          # Data prep, XGBoost training, combo evaluation
+│   ├── product_mapping_utils.py# Category/product/SKU mapping
+│   ├── demand_model.pkl        # Trained demand forecasting model
+│   ├── demand_encoder.pkl      # Encoder for demand model inputs
+│   ├── historical_training_data.csv
+│   ├── returns_dataset.csv
+│   ├── walmart_dataset_10000_orders.xlsx
 │   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/       # Map view, cost dashboard, route visualizer
-│   │   ├── pages/
-│   │   └── App.jsx
-│   ├── package.json
-│   └── vite.config.js
-├── docs/                     # Architecture notes, diagrams
-├── .env.example
+├── src/                        # React frontend source
+├── public/
 └── README.md
 ```
-
-> **Note:** Adjust this tree to match your actual repository layout before publishing.
 
 ## 🚦 Getting Started
 
 ### Prerequisites
-
-Make sure the following are installed on your machine:
 
 | Tool | Minimum Version | Check with |
 |------|------------------|------------|
@@ -137,7 +180,7 @@ Make sure the following are installed on your machine:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/FulfillMesh.git
+git clone https://github.com/DKarthikeya31/FulfillMesh.git
 cd FulfillMesh/backend
 
 # 2. Create and activate a virtual environment
@@ -147,101 +190,61 @@ source venv/bin/activate        # On Windows: venv\Scripts\activate
 # 3. Install Python dependencies
 pip install -r requirements.txt
 
-# 4. Run the API server
+# 4. Set your Anthropic API key (required for the NL query layer)
+export ANTHROPIC_API_KEY=your_key_here   # On Windows: set ANTHROPIC_API_KEY=your_key_here
+
+# 5. Run the API server
 python app.py
 ```
 
-The backend will start on **`http://localhost:5000`** (Flask) or **`http://localhost:8000`** (FastAPI/uvicorn), depending on configuration.
-
-If using FastAPI with uvicorn directly:
-
-```bash
-uvicorn app:app --reload --port 8000
-```
+The backend will start on **`http://localhost:5000`**.
 
 ### 2. Frontend Setup
 
 ```bash
 # From the project root
-cd frontend
+cd src
 
 # 1. Install dependencies
 npm install
 
-# 2. Configure the API base URL (see below)
-cp .env.example .env
-
-# 3. Run the development server
+# 2. Run the development server
 npm run dev
 ```
 
-The frontend will be available at **`http://localhost:5173`** (Vite default) or **`http://localhost:3000`** depending on your bundler config.
-
-### 3. Environment Variables
-
-Create a `.env` file in `frontend/` (and `backend/` if applicable):
-
-```bash
-# frontend/.env
-VITE_API_BASE_URL=http://localhost:8000
-
-# backend/.env
-DEBUG=True
-DEMAND_DATA_PATH=./data/demand.csv
-NODE_DATA_PATH=./data/nodes.csv
-```
-
-### 4. Verifying the Setup
+### 3. Verifying the Setup
 
 ```bash
 # Health check
-curl http://localhost:8000/health
+curl http://localhost:5000/
 
 # Expected response
-# {"status": "ok", "engine": "FulfillMesh v1.0"}
-```
+# {"message": "Walmart Inventory API is running"}
 
-Then open the frontend in your browser and trigger a sample optimization run from the UI to confirm end-to-end connectivity.
+# NL query test
+curl -X POST http://localhost:5000/nl_query \
+  -H "Content-Type: application/json" \
+  -d '{"query": "I need 2 wireless mice delivered near Andheri, Mumbai"}'
+```
 
 ## 📡 API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|--------------|
-| `GET` | `/health` | Service health check |
-| `GET` | `/nodes` | List all fulfillment nodes with current load/inventory |
-| `POST` | `/optimize/node` | Returns the optimal fulfillment node for a given order |
-| `POST` | `/optimize/route` | Returns a bundled delivery + return route |
-| `POST` | `/forecast/demand` | Returns demand-aware inventory recommendations |
-
-**Example — Node Selection Request**
-
-```bash
-curl -X POST http://localhost:8000/optimize/node \
-  -H "Content-Type: application/json" \
-  -d '{
-        "order_location": {"lat": 12.9716, "lng": 77.5946},
-        "sku": "SKU-10293",
-        "quantity": 2
-      }'
-```
-
-**Example — Response**
-
-```json
-{
-  "selected_node": "NODE-BLR-04",
-  "estimated_cost": 42.7,
-  "estimated_delivery_time_mins": 95,
-  "alternatives": ["NODE-BLR-02", "NODE-BLR-07"]
-}
-```
+| `GET` | `/` | Service health check |
+| `POST` | `/process_order` | Returns the top fulfillment node combinations for a given SKU list and location |
+| `GET` | `/product_mapping` | Returns category → product → SKU mappings |
+| `POST` | `/predict_demand` | Returns a demand prediction for given input features |
+| `POST` | `/get_nearby_returns` | Returns nearby return items within a given radius |
+| `POST` | `/nl_query` | **(New)** Accepts a natural-language order request, extracts structured SKUs/location via Claude, and returns fulfillment recommendations |
 
 ## 🧮 Algorithmic Approach
 
 - **Graph Modeling:** Fulfillment nodes and delivery points are modeled as vertices in a weighted graph (`networkx.Graph` / `DiGraph`), with edges weighted by a composite cost function of distance, fuel, current load, and time-to-deliver.
-- **Node Selection:** A cost-minimization search (Dijkstra-based, extended with a custom weighting function) ranks candidate nodes in real time using live inventory and demand signals rather than static proximity.
+- **Node Selection:** A cost-minimization search ranks candidate nodes in real time using live inventory and demand signals rather than static proximity, backed by trained XGBoost cost and surge models.
 - **Route Bundling:** Delivery and return requests within a serviceable radius/time-window are clustered and merged using a greedy/heuristic bundling strategy to minimize total route cost while respecting vehicle capacity constraints.
-- **Demand-Aware Routing:** A lightweight forecasting layer (Pandas/NumPy-based, extensible to ML models) feeds predicted demand back into the node-scoring function, discouraging over-fulfillment from low-demand nodes.
+- **Demand-Aware Routing:** A forecasting layer feeds predicted demand back into the node-scoring function, discouraging over-fulfillment from low-demand nodes.
+- **Natural Language Understanding:** Claude's tool-use API extracts structured intent (products + delivery area) from free text, which is then resolved to SKUs and coordinates before being handed to the existing optimization pipeline — keeping the ML pipeline itself unchanged and the LLM layer strictly additive.
 
 ## 📈 Impact & Results
 
@@ -254,23 +257,11 @@ curl -X POST http://localhost:8000/optimize/node \
 
 > Figures above are based on simulated scenarios in this prototype and are intended to demonstrate directional impact, not audited production metrics.
 
-## 🧪 Testing
-
-```bash
-cd backend
-pytest tests/ -v
-```
-
-```bash
-cd frontend
-npm run test
-```
-
 ## 🗺️ Roadmap
 
 - [ ] Replace heuristic bundling with a proper VRP (Vehicle Routing Problem) solver (e.g., OR-Tools)
 - [ ] Integrate live traffic/weather signals into route cost weighting
-- [ ] Add a proper ML-based demand forecasting model (replacing the current statistical baseline)
+- [ ] Extend the Claude tool-use layer to support multi-turn clarification (e.g., ambiguous product names)
 - [ ] Containerize backend + frontend with Docker Compose
 - [ ] Add authentication and multi-tenant support for the API
 - [ ] CI/CD pipeline with automated tests on PRs
