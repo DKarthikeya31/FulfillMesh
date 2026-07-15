@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
 [![Status](https://img.shields.io/badge/Status-Prototype-yellow.svg)](#)
 
-[Demo](https://youtu.be/q6AUIC6gOYQ) · [Problem](#-problem-statement) · [Solution](#-solution) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
+[Problem](#-problem-statement) · [Solution](#-solution) · [Architecture](#-architecture) · [Getting Started](#-getting-started) · [API Reference](#-api-reference)
 
 </div>
 
